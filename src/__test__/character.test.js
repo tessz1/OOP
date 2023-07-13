@@ -46,7 +46,8 @@ describe('Character', () => {
 
     test('if the health is less than 1 then the error', () => {
         expect(() => {
-            const character = new Character('John', 'Daemon', -1, 1);
+            const character = new Character('John', 'Daemon');
+            character.damage(200)
             character.levelup();
         }).toThrowError('Нельзя повысить уровень умершего.');
     });
