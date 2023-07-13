@@ -17,13 +17,5 @@
   },
   "dependencies": {
     "coverage": "^0.4.1"
-  },
-  "jest": {
-    "testMatch": [
-      "**/__test__/**/*.js"
-    ],
-    "testPathIgnorePatterns": [
-      "/index.js"
-    ]
   }
 }
