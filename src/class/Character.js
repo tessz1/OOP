@@ -11,8 +11,10 @@ export class Character {
         this.type = type;
         this.health = 100;
         this.level = 1;
-        this.attack = 20;
-        this.defence = 20;
+        this.attack = undefined;
+        this.defence = undefined;
+        // this.baseAttack = 10;
+        // this.baseDefence = 10;
     }
 
     levelup() {
