@@ -13,11 +13,9 @@ export class Character {
         this.level = 1;
         this.attack = undefined;
         this.defence = undefined;
-        // this.baseAttack = 10;
-        // this.baseDefence = 10;
     }
 
-    levelup() {
+    levelup() { 
         if (this.health <= 0) {
             throw new Error("Нельзя повысить уровень умершего.");
         }
@@ -32,3 +30,5 @@ export class Character {
         }
     }
 }
+
+

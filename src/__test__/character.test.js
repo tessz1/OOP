@@ -1,4 +1,6 @@
 import { Character } from '../class/Character';
+import Bowerman from '../class/Bowerman';
+
 
 describe('Character', () => {
     test('should create valid name', () => {
@@ -31,24 +33,29 @@ describe('Character', () => {
     });
 
     test('check levelup method', () => {
-        const character = new Character('John', 'Daemon', 100, 1);
-        character.levelup();
-        expect(character.level).toBe(2);
-        expect(character.attack).toBeUndefined();
-        expect(character.defence).toBeUndefined();
-    });
-
-    test('check damage method', () => {
-        const character = new Character('John', 'Daemon', 100, 1);
-        character.damage(20);
-        expect(character.health).toBeCloseTo(80);
-    });
-
-    test('if the health is less than 1 then the error', () => {
-        const character = new Character('John', 'Daemon', 100, 1);
-        character.health = 0;
+        const bowerman = new Bowerman('Bowman'); 
+        bowerman.levelup();
+        const result = { attack: 30, defence: 30, health: 100, level: 2, name: 'Bowman', type: 'Bowman' }; 
+        expect(bowerman).toEqual(result);
+      });
+      
+      test('check damage method', () => {
+        const bowerman = new Bowerman('Bowman'); 
+        bowerman.damage(10);
+        const result = {
+          attack: 25, defence: 25, health: 92.5, level: 1, name: 'Bowman', type: 'Bowman' 
+        };
+        expect(bowerman).toEqual(result);
+      });
+      
+      test('if the health is less than 0 then the error', () => {
+        const bowerman = new Bowerman('Bowman');
+        bowerman.damage(150);
+        const result = {
+            attack: 25, defence: 25, health: 0, level: 1, name: 'Bowman', type: 'Bowman'
+        };
         expect(() => {
-            character.levelup();                                                                                                        
-        }).toThrowError('Нельзя повысить уровень умершего.');
-    });
-});
+          bowerman.levelup();
+        }).toThrowError(new Error('Нельзя повысить уровень умершего.'));
+      });
+    })
